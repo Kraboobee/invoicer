@@ -31,4 +31,9 @@ body {
 
 h1 {
   font-family: 'Metrify A';
+  color: var(--mantine-color-uiViolet-5);
+}
+
+h2 {
+  font-family: 'Metrify B';
 }

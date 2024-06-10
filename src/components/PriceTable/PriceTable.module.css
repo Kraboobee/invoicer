@@ -1,3 +1,26 @@
 .price {
   text-align: right;
+
+  & h2 {
+    padding-right: 10px;
+  }
+}
+
+.tableBlock {
+  margin-top: 2rem;
+  margin-bottom: 5rem;
+
+  & tr {
+    font-size: 1.1rem;
+  }
+
+  & .tableHeader {
+    font-size: 1.3rem;
+    font-family: 'Metrify B';
+  }
+
+  & h2 {
+    text-align: right;
+    margin-top: 1.5rem;
+  }
 }

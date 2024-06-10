@@ -1,10 +1,13 @@
 import classes from './PriceTable.module.css';
 import { Table } from '@mantine/core';
 
-const items = [
+export const items = [
   { description: 'Web Design and Development Service', price: 5000 },
-  { description: 'extortion', price: 50000 },
+  { description: 'Extortion', price: 50000 },
+  { description: 'Double extortion', price: 100000 },
 ];
+
+export const total = items.reduce((a, v) => (a = a + v.price), 0);
 
 const rows = items.map((item) => (
   <Table.Tr key={item.description}>
@@ -15,14 +18,18 @@ const rows = items.map((item) => (
 
 export function PriceTable() {
   return (
-    <Table striped>
-      <Table.Thead>
-        <Table.Tr>
-          <Table.Th>Description</Table.Th>
-          <Table.Th className={classes.price}>Price</Table.Th>
-        </Table.Tr>
-      </Table.Thead>
-      <Table.Tbody>{rows}</Table.Tbody>
-    </Table>
+    <div className={classes.tableBlock}>
+      <Table striped>
+        <Table.Thead>
+          <Table.Tr className={classes.tableHeader}>
+            <Table.Th>Description</Table.Th>
+            <Table.Th className={classes.price}>Price</Table.Th>
+          </Table.Tr>
+        </Table.Thead>
+        <Table.Tbody>{rows}</Table.Tbody>
+      </Table>
+
+      <h2>Total: R {total}</h2>
+    </div>
   );
 }
