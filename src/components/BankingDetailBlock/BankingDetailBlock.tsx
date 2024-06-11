@@ -3,7 +3,7 @@ import { invNumber } from '../Invoice/Invoice';
 
 export function BankingDetailBlock() {
   return (
-    <div className={classes.details}>
+    <div className={classes.details} contentEditable="true">
       <h2>Banking Details</h2>
       <p>Bank Name:</p>
       <p>Account Holder:</p>
