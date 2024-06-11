@@ -1,14 +1,27 @@
-# Mantine Vite template
+# Invoice Generator
 
 ## Features
 
-This template comes with the following features:
+Editable information
 
-- [PostCSS](https://postcss.org/) with [mantine-postcss-preset](https://mantine.dev/styles/postcss-preset)
-- [TypeScript](https://www.typescriptlang.org/)
-- [Storybook](https://storybook.js.org/)
-- [Vitest](https://vitest.dev/) setup with [React Testing Library](https://testing-library.com/docs/react-testing-library/intro)
-- ESLint setup with [eslint-config-mantine](https://github.com/mantinedev/eslint-config-mantine)
+- Banking Details
+- Company and Client Addresses
+
+Invoice Number
+
+- Naming Convention - {Current date (yyMMdd) }{Sale Number}
+- Increment sale number
+  (buttons hidden under Invoice Number so they don't get printed)
+- Autopopulates payment ref
+
+![gif showing hidden buttons](./Buttons.gif)
+
+## To do
+
+Make Products editable
+
+- Currently reads a hardcoded list
+- Autosums product prices
 
 ## npm scripts
 
@@ -26,9 +39,3 @@ This template comes with the following features:
 - `vitest` – runs vitest tests
 - `vitest:watch` – starts vitest watch
 - `test` – runs `vitest`, `prettier:check`, `lint` and `typecheck` scripts
-
-### Other scripts
-
-- `storybook` – starts storybook dev server
-- `storybook:build` – build production storybook bundle to `storybook-static`
-- `prettier:write` – formats all files with Prettier

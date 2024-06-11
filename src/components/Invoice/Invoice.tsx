@@ -6,7 +6,7 @@ import classes from './Invoice.module.css';
 
 export function Invoice() {
   return (
-    <Paper className={classes.page} shadow="sm" p="xl">
+    <Paper className={classes.page}>
       <div className={classes.header}>
         <LogoBlock />
         <h1>Invoice</h1>

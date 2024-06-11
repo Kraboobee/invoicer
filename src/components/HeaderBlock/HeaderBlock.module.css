@@ -22,7 +22,7 @@
     color: white;
   }
   & button:hover {
-    background-color: purple;
+    background-color: #5e3fd7;
   }
 }
 
