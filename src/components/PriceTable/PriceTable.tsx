@@ -3,8 +3,8 @@ import { Table } from '@mantine/core';
 
 export const items = [
   { description: 'Web Design and Development Service', price: 5000 },
-  { description: 'Extortion', price: 50000 },
-  { description: 'Double extortion', price: 100000 },
+  { description: 'Logo Design', price: 500 },
+  { description: 'Copywriting', price: 500 },
 ];
 
 export const total = items.reduce((a, v) => (a = a + v.price), 0);
