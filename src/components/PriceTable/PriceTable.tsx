@@ -28,8 +28,10 @@ export function PriceTable() {
         </Table.Thead>
         <Table.Tbody>{rows}</Table.Tbody>
       </Table>
-
-      <h2>Total: R {total}</h2>
+      <div className={classes.totalBlock}>
+        <h2>Total: R {total}</h2>
+        <p>Please email proof of payment to info@ui-together.com</p>
+      </div>
     </div>
   );
 }

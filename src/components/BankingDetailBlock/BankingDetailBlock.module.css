@@ -1,0 +1,10 @@
+.details {
+  text-align: right;
+
+  & h2 {
+    margin-top: 0;
+  }
+  & p {
+    margin: 5px;
+  }
+}
