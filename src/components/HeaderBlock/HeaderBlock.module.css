@@ -14,4 +14,23 @@
   & h3 {
     font-weight: 300;
   }
+
+  & button {
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+    color: white;
+  }
+  & button:hover {
+    background-color: #5e3fd7;
+  }
+}
+
+.invoiceNumber {
+  margin-bottom: 0;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
 }

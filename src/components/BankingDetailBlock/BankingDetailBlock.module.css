@@ -1,10 +1,31 @@
-.details {
-  text-align: right;
+.block {
+  padding: 20px;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 24px;
 
   & h2 {
     margin-top: 0;
   }
   & p {
-    margin: 5px;
+    margin: 3px;
+    padding: 5px;
   }
+}
+
+.headings {
+  text-align: left;
+
+  & p {
+    margin: 3px;
+    padding: 5px;
+  }
+}
+
+.details {
+  text-align: right;
 }

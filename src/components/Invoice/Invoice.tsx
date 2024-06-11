@@ -4,18 +4,9 @@ import { LogoBlock } from '../LogoBlock/LogoBlock';
 import { PriceTable, total } from '../PriceTable/PriceTable';
 import classes from './Invoice.module.css';
 
-const day: Date = new Date();
-const today: string = day.toLocaleDateString();
-var iso: string = day.toISOString();
-iso = iso.substring(2, iso.indexOf('T')).replaceAll('-', '');
-
-const saleNumber = '02';
-
-const invNumber = 'IN ' + iso + saleNumber;
-
 export function Invoice() {
   return (
-    <Paper className={classes.page} shadow="sm" p="xl">
+    <Paper className={classes.page}>
       <div className={classes.header}>
         <LogoBlock />
         <h1>Invoice</h1>
@@ -31,5 +22,3 @@ export function Invoice() {
     </Paper>
   );
 }
-
-export { today, invNumber };

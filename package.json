@@ -21,9 +21,14 @@
   "dependencies": {
     "@mantine/core": "7.10.0",
     "@mantine/hooks": "7.10.0",
+    "@types/react-edit-text": "^5.0.4",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^2.5.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.22.3"
+    "react-edit-text": "^5.1.1",
+    "react-router-dom": "^6.22.3",
+    "react-to-print": "^2.15.1"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^8.1.3",
