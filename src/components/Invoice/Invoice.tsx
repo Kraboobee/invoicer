@@ -1,5 +1,6 @@
 import { Divider, Text, Paper } from '@mantine/core';
 import { AddressBlock } from '../AddressBlock/AddressBlock';
+import { LineItemWrapper } from '../LineItem/LineItemWrapper';
 import { LogoBlock } from '../LogoBlock/LogoBlock';
 import { PriceTable, total } from '../PriceTable/PriceTable';
 import classes from './Invoice.module.css';
@@ -15,7 +16,8 @@ export function Invoice() {
 
       <Divider my="xl" />
 
-      <PriceTable />
+      {/* <PriceTable /> */}
+      <LineItemWrapper />
       <div className={classes.footer}>
         <h1>Thank you for your business!</h1>
       </div>
