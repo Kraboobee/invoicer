@@ -1,11 +1,12 @@
 import { LineItemForm } from './LineItemForm';
 import { useState } from 'react';
 import classes from '../LineItem/LineItem.module.css';
-import { Button, Group, NumberFormatter, Table, Modal } from '@mantine/core';
+import { Button, NumberFormatter, Table, Modal, useMantineTheme } from '@mantine/core';
 import { item } from './LineItem';
 import { useDisclosure } from '@mantine/hooks';
 
 export const LineItemWrapper = () => {
+  const theme = useMantineTheme();
   const [desc, setDesc] = useState();
   const [price, setPrice] = useState(0);
   const [qty, setQty] = useState(1);
@@ -44,7 +45,17 @@ export const LineItemWrapper = () => {
 
   const rows = lineItems.map((lineItem: any) => (
     <Table.Tr key={lineItem.desc}>
-      <Table.Td>{lineItem.desc}</Table.Td>
+      <Table.Td className={classes.descriptionRow}>
+        {lineItem.desc}
+
+        <Button
+          color="violet"
+          className={classes.deleteButton}
+          onClick={() => deleteItem(lineItem.desc)}
+        >
+          Remove Item
+        </Button>
+      </Table.Td>
       <Table.Td className={classes.price}>
         <NumberFormatter prefix="R " value={lineItem.price} thousandSeparator />
       </Table.Td>
@@ -75,7 +86,7 @@ export const LineItemWrapper = () => {
         <Table striped withColumnBorders withTableBorder>
           <Table.Thead>
             <Table.Tr className={classes.tableHeader}>
-              <Table.Th>Description</Table.Th>
+              <Table.Th className={classes.description}>Description</Table.Th>
               <Table.Th className={classes.unitPrice}>Unit Price</Table.Th>
               <Table.Th className={classes.qtyHeader}>Qty</Table.Th>
               <Table.Th className={classes.totalPrice}>Total</Table.Th>
@@ -87,13 +98,16 @@ export const LineItemWrapper = () => {
           <Modal opened={opened} onClose={close} title="Add Item">
             <LineItemForm addItem={addItem} />
           </Modal>
-          <Button color="violet" className={classes.addItemButton} onClick={open}>
+          <Button color={theme.colors.uiViolet[4]} className={classes.addItemButton} onClick={open}>
             Add Item
           </Button>
 
-          <h2>
-            Total: <NumberFormatter prefix="R " value={total} thousandSeparator />{' '}
-          </h2>
+          <div className={classes.totalRow}>
+            <h1>Total Due: </h1>
+            <h2>
+              <NumberFormatter prefix="R " value={total} thousandSeparator />{' '}
+            </h2>
+          </div>
           <p>Please email proof of payment to info@ui-together.com</p>
         </div>
       </div>
