@@ -1,21 +1,60 @@
 import { LineItemForm } from "./LineItemForm";
 import { useState } from "react";
-import classes from '../PriceTable/PriceTable.module.css'
-import { Table } from "@mantine/core";
+import classes from '../LineItem/LineItem.module.css'
+import { Button, Group, NumberFormatter, Table } from "@mantine/core";
 
 export const LineItemWrapper = () => {
-    const [lineItems, setLineItems] = useState([] as any);
-
-    const addItem = (lineItem:{desc:string, price:number, qty:number}) => {
-        setLineItems([...lineItems, {desc: lineItem.desc, price: lineItem.price, qty: lineItem.qty}])
+    interface item {
+        desc:string;
+        price:number;
+        qty:number;
     }
 
+    const [lineItems, setLineItems] = useState([] as any);
+    
+        const addItem = (lineItem:item) => {
+            if (lineItems.includes(lineItem.desc)) {
+                incrementQty(lineItem.desc)
+            } else {
+                setLineItems([...lineItems, lineItem])
+
+            }
+        }
+    
+        const deleteItem = (desc: string) => {
+            setLineItems(lineItems.filter((lineItem: item) => lineItem.desc !== desc) )
+        }
+
+        const incrementQty = (desc: string) => {
+            setLineItems(lineItems.map((lineItem:item) => lineItem.desc === desc ? {...lineItem, qty:lineItem.qty +1}: lineItem))
+        }
+        
+
+        const decrementQty = (desc: string) => {
+            setLineItems(lineItems.map((lineItem:item) => (lineItem.desc === desc && lineItem.qty>(1)) ? {...lineItem, qty:lineItem.qty -1}: lineItem))
+        }
+        
+    
+    
     const rows = lineItems.map((lineItem:any) => (
         <Table.Tr key={lineItem.desc}>
-          <Table.Td>{lineItem.desc}</Table.Td>
-          <Table.Td className={classes.price}>R {lineItem.price}</Table.Td>
-          <Table.Td className={classes.price}>{lineItem.qty}</Table.Td>
-          <Table.Td className={classes.price}>R {lineItem.price * lineItem.qty}</Table.Td>
+          <Table.Td onClick={() => deleteItem(lineItem.desc)}>{lineItem.desc}</Table.Td>
+          <Table.Td className={classes.price}><NumberFormatter prefix="R " value={lineItem.price} thousandSeparator /></Table.Td>
+          <Table.Td 
+          onClick={() => decrementQty(lineItem.desc)} 
+          className={classes.price}>
+            <Group>
+            <Button onClick={() => decrementQty(lineItem.desc)}>
+                -
+            </Button>
+            <Button onClick={() => incrementQty(lineItem.desc)}>
+                +
+            </Button>
+                
+            </Group>
+            {lineItem.qty}
+            </Table.Td>
+          <Table.Td className={classes.price}><NumberFormatter prefix="R " value={lineItem.price * lineItem.qty} thousandSeparator /></Table.Td>
         </Table.Tr>
       ));
 
@@ -24,6 +63,7 @@ export const LineItemWrapper = () => {
     
     return (
         <div>
+
     <div className={classes.tableBlock}>
       <Table striped>
         <Table.Thead>
@@ -36,13 +76,14 @@ export const LineItemWrapper = () => {
         </Table.Thead>
         <Table.Tbody>{rows}</Table.Tbody>
       </Table>
-      <LineItemForm addItem={addItem} />
 
       <div className={classes.totalBlock}>
-        <h2>Total: R {total}</h2>
+        <h2>Total: <NumberFormatter prefix="R " value={total} thousandSeparator /> </h2>
         <p>Please email proof of payment to info@ui-together.com</p>
       </div>
     </div>
+    <LineItemForm addItem={addItem} />
+
         </div>
     )
 }
