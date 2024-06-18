@@ -1,10 +1,12 @@
-import classes from './PriceTable.module.css';
-import { Table } from '@mantine/core';
-import { LineItemWrapper } from '../LineItem/LineItemWrapper';
-
+import classes from './LineItem.module.css';
+import { useState } from 'react';
 // export const total = items.reduce((a, v) => (a = a + v.price), 0);
 
-
+export interface item {
+  desc: string;
+  price: number;
+  qty: number;
+}
 
 // export function allItems() {
 //   return (

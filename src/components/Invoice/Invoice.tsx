@@ -13,10 +13,6 @@ export function Invoice() {
         <h1>Invoice</h1>
       </div>
       <AddressBlock />
-
-      <Divider my="xl" />
-
-      {/* <PriceTable /> */}
       <LineItemWrapper />
       <div className={classes.footer}>
         <h1>Thank you for your business!</h1>
