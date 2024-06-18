@@ -1,5 +1,5 @@
 import { LineItemForm } from './LineItemForm';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import classes from '../LineItem/LineItem.module.css';
 import { Button, NumberFormatter, Table, Modal, useMantineTheme } from '@mantine/core';
 import { item } from './LineItem';
@@ -12,13 +12,35 @@ export const LineItemWrapper = () => {
   const [qty, setQty] = useState(1);
   const [opened, { open, close }] = useDisclosure(false);
 
-  const [lineItems, setLineItems] = useState([] as any);
+  useEffect(function addItem() {
+    saveItems();
+  });
+
+  useEffect(function deleteItem() {
+    saveItems();
+  });
+
+  useEffect(function incrementQty() {
+    saveItems();
+  });
+
+  useEffect(function decrementQty() {
+    saveItems();
+  });
+
+  const loadItems = () => {
+    var storedItemList = JSON.parse(localStorage.getItem('itemList') || '[]');
+    return storedItemList;
+  };
+
+  const saveItems = () => {
+    localStorage.setItem('itemList', JSON.stringify(lineItems));
+  };
+
+  const [lineItems, setLineItems] = useState(loadItems);
+
   const addItem = (lineItem: item) => {
-    if (lineItems.includes(lineItem.desc)) {
-      incrementQty(lineItem.desc);
-    } else {
-      setLineItems([...lineItems, lineItem]);
-    }
+    setLineItems([...lineItems, lineItem]);
   };
 
   const deleteItem = (desc: string) => {
@@ -42,7 +64,6 @@ export const LineItemWrapper = () => {
       )
     );
   };
-
   const rows = lineItems.map((lineItem: any) => (
     <Table.Tr key={lineItem.desc}>
       <Table.Td className={classes.descriptionRow}>
