@@ -55,8 +55,6 @@
   text-align: right;
   & button {
     background-color: transparent;
-    margin: 2rem 0 0 auto;
-    width: 8rem;
   }
   & h2 {
     margin-bottom: 0;
@@ -112,13 +110,13 @@
   display: flex;
   justify-content: center;
   align-text: center;
-  gap: 0.5rem;
+  gap: 1rem;
 
   & button {
     background-color: transparent;
     color: transparent;
-    width: 1.5rem;
-    height: 1.4rem;
+    width: 1.7rem;
+    height: 1.7rem;
     padding: 0;
   }
   & button:hover {
