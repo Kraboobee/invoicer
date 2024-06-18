@@ -1,5 +1,6 @@
 import classes from './PriceTable.module.css';
 import { Table } from '@mantine/core';
+import { LineItemWrapper } from '../LineItem/LineItemWrapper';
 
 export const items = [
   { description: 'Web Design and Development Service', price: 5000 },
